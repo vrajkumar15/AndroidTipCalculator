@@ -24,13 +24,17 @@ public class TipCalcActivity extends Activity {
 		return true;
 	}
 	
+	//Button onClick Method
 	public void onClick(View v){
+		//Get the tag passed on the tip percentage clicked
 		int perc = Integer.parseInt((String)v.getTag());
 		calcTip(perc);
 	}
 
+	//Function to calculate the tip and total amount
 	private void calcTip(int i) {
 		EditText NewItem = (EditText) findViewById(R.id.itfItem);
+		//Check to see if bill amount entered is not empty
 		if(NewItem.getText().toString().length() != 0)
 		{
 			Double billAmount = Double.parseDouble(NewItem.getText().toString());
@@ -38,12 +42,15 @@ public class TipCalcActivity extends Activity {
 			Double totAmount = billAmount + tipAmount;
 			tipAmount = roundTwoDecimals(tipAmount);
 			totAmount = roundTwoDecimals(totAmount);
+			//Set tip amount
 			TextView OutItem = (TextView) findViewById(R.id.tipItem);
 			OutItem.setText("$" + tipAmount.toString());
+			//Set Total Bill amount
 			TextView TotItem = (TextView) findViewById(R.id.totItem);
 			TotItem.setText("$" + totAmount.toString());	
 		}
 		else{
+			//Reset the values if bill amount is empty
 			TextView OutItem = (TextView) findViewById(R.id.tipItem);
 			OutItem.setText("");
 			TextView TotItem = (TextView) findViewById(R.id.totItem);
@@ -52,7 +59,7 @@ public class TipCalcActivity extends Activity {
 	}
 
 
-
+    //To have two decimals for float values
 	public double roundTwoDecimals(double d) {
         DecimalFormat twoDForm = new DecimalFormat("#.##");
     return Double.valueOf(twoDForm.format(d));
