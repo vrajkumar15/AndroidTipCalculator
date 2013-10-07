@@ -15,7 +15,8 @@
         android:layout_alignBaseline="@+id/btn1Select"
         android:layout_alignBottom="@+id/btn1Select"
         android:layout_centerHorizontal="true"
-        android:onClick="select15PercTip"
+        android:onClick="onClick"
+        android:tag="15"
         android:text="15%" />
 
     <Button
@@ -26,7 +27,8 @@
         android:layout_alignBottom="@+id/btn2Select"
         android:layout_marginLeft="18dp"
         android:layout_toRightOf="@+id/btn2Select"
-        android:onClick="select20PercTip"
+        android:onClick="onClick"
+        android:tag="20"
         android:text="20%" />
 
     <Button
@@ -36,7 +38,8 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="90dp"
         android:layout_toLeftOf="@+id/btn2Select"
-        android:onClick="select10PercTip"
+        android:onClick="onClick"
+        android:tag="10"
         android:text="10%" />
 
     <EditText
@@ -63,33 +66,28 @@
         android:layout_marginTop="121dp"
         android:text="Tip is:" />
 
-    <EditText
-        android:id="@+id/otfItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView1"
-        android:layout_alignBottom="@+id/textView1"
-        android:layout_toRightOf="@+id/btn1Select"
-        android:ems="10"
-        android:inputType="numberDecimal" />
-
-    <EditText
-        android:id="@+id/ttfItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/otfItem"
-        android:layout_below="@+id/otfItem"
-        android:layout_marginTop="61dp"
-        android:ems="10"
-        android:inputType="numberDecimal" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/ttfItem"
-        android:layout_alignBottom="@+id/ttfItem"
         android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="45dp"
         android:text="Total Amt:" />
+
+    <TextView
+        android:id="@+id/tipItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView2"
+        android:layout_alignLeft="@+id/btn2Select" />
+
+    <TextView
+        android:id="@+id/totItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignLeft="@+id/tipItem" />
 
 </RelativeLayout>

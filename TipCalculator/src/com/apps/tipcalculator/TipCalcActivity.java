@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class TipCalcActivity extends Activity {
 
@@ -23,29 +24,31 @@ public class TipCalcActivity extends Activity {
 		return true;
 	}
 	
-	public void select10PercTip(View v){
-		calcTip(10);			
+	public void onClick(View v){
+		int perc = Integer.parseInt((String)v.getTag());
+		calcTip(perc);
 	}
-	
-	public void select15PercTip(View v){
-		calcTip(15);
-	}
-	
-	public void select20PercTip(View v){
-		calcTip(20);
-	}
-	
+
 	private void calcTip(int i) {
 		EditText NewItem = (EditText) findViewById(R.id.itfItem);
-		Double billAmount = Double.parseDouble(NewItem.getText().toString());
-		Double tipAmount = ((billAmount * i) /100 );
-		Double totAmount = billAmount + tipAmount;
-		tipAmount = roundTwoDecimals(tipAmount);
-		totAmount = roundTwoDecimals(totAmount);
-		EditText OutItem = (EditText) findViewById(R.id.otfItem);
-		OutItem.setText("$" + tipAmount.toString());
-		EditText TotItem = (EditText) findViewById(R.id.ttfItem);
-		TotItem.setText("$" + totAmount.toString());	
+		if(NewItem.getText().toString().length() != 0)
+		{
+			Double billAmount = Double.parseDouble(NewItem.getText().toString());
+			Double tipAmount = ((billAmount * i) /100 );
+			Double totAmount = billAmount + tipAmount;
+			tipAmount = roundTwoDecimals(tipAmount);
+			totAmount = roundTwoDecimals(totAmount);
+			TextView OutItem = (TextView) findViewById(R.id.tipItem);
+			OutItem.setText("$" + tipAmount.toString());
+			TextView TotItem = (TextView) findViewById(R.id.totItem);
+			TotItem.setText("$" + totAmount.toString());	
+		}
+		else{
+			TextView OutItem = (TextView) findViewById(R.id.tipItem);
+			OutItem.setText("");
+			TextView TotItem = (TextView) findViewById(R.id.totItem);
+			TotItem.setText("");
+		}
 	}
 
 
